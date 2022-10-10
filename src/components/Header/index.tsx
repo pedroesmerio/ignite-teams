@@ -1,4 +1,4 @@
-import { BackButton, BackIcon, Container, Logo } from "./styles";
+import { BackButton, HomeButton, BackIcon, Container, Logo } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 
 import logoImg from "@assets/logo.png";
@@ -14,6 +14,10 @@ export function Header({ showBackButton = false }: props) {
     navigation.goBack();
   }
 
+  function gotoHomeScreen() {
+    navigation.navigate("groups");
+  }
+
   return (
     <Container>
       {showBackButton && (
@@ -21,7 +25,9 @@ export function Header({ showBackButton = false }: props) {
           <BackIcon />
         </BackButton>
       )}
-      <Logo source={logoImg} />
+      <HomeButton onPress={gotoHomeScreen}>
+        <Logo source={logoImg} />
+      </HomeButton>
     </Container>
   );
 }
